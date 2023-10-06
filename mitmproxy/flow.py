@@ -9,6 +9,8 @@ from dataclasses import field
 from typing import Any
 from typing import ClassVar
 
+from typing_extensions import Self
+
 from mitmproxy import connection
 from mitmproxy import exceptions
 from mitmproxy import version
@@ -181,7 +183,7 @@ class Flow(serializable.Serializable):
         assert state == {}
 
     @classmethod
-    def from_state(cls, state: serializable.State) -> Flow:
+    def from_state(cls, state: serializable.State) -> Self:
         try:
             flow_cls = Flow.__types[state["type"]]
         except KeyError:
